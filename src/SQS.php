@@ -45,7 +45,7 @@ class SQS extends Sdk {
             'secret' => env('AMAZON_SECRET_SQS', $this->credentials["secret"]),
         );
 
-        $this->client = $this->sdk->createSes();
+        $this->client = $this->sdk->createSqs();
     }
 
     function getQueueName() {
