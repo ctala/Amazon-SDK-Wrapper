@@ -50,7 +50,7 @@ class SQS extends Sdk {
             'version' => $this->version,
             'credentials' => $this->credentials
         ];
-        $this->logThis(print_r($this->sharedConfig));
+        $this->logThis(print_r($this->sharedConfig,true));
         // Creamos la clase SDK.
         $this->sdk = new AWSSdk($this->sharedConfig);
         $this->client = $this->sdk->createSqs();
