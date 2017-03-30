@@ -24,7 +24,6 @@
  * THE SOFTWARE.
  */
 
-
 namespace ctala\AWS;
 
 use Aws\Sdk as AWSSdk;
@@ -45,7 +44,7 @@ class Sdk {
     var $debug = false;
 
     function __construct() {
-         
+
         $this->region = env('AMAZON_REGION', 'us-west-2');
         $this->version = env('AMAZON_VERSION', 'latest');
         $this->credentials = array(
@@ -57,10 +56,14 @@ class Sdk {
             'version' => $this->version,
             'credentials' => $this->credentials
         ];
-        if($this->debug){
-            error_log(print_r($this->sharedConfig));
-        }
-        
+
+        $this->debug = env('APP_DEBUG', false);
+
+
+
+        $this->logThis(print_r($this->sharedConfig));
+
+
 
         // Creamos la clase SDK.
 //        $this->sdk = new AWSSdk($this->sharedConfig);
@@ -69,7 +72,7 @@ class Sdk {
     function getClient() {
         return $this->client;
     }
-    
+
     function getRegion() {
         return $this->region;
     }
@@ -118,6 +121,10 @@ class Sdk {
         $this->debug = $debug;
     }
 
-
+    function logThis($message) {
+        if ($this->debug) {
+            error_log($message);
+        }
+    }
 
 }

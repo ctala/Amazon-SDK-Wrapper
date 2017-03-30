@@ -55,9 +55,11 @@ class SES extends Sdk {
             'version' => $this->version,
             'credentials' => $this->credentials
         ];
+
+        $this->logThis(print_r($this->sharedConfig));
+
         // Creamos la clase SDK.
         $this->sdk = new AWSSdk($this->sharedConfig);
-         
         $this->client = $this->sdk->createSes();
     }
 
