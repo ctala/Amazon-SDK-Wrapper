@@ -1,0 +1,21 @@
+{
+    "name": "ctala/amazon-sdk-wrapper",
+    "description": "Wrapper para el SDK de Amazon V3 para PHP Edit",
+    "type": "library, wrapper",
+    "require": {
+        "vlucas/phpdotenv": "2.2",
+        "aws/aws-sdk-php": "^3.24"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cristian Tala Sanchez",
+            "email": "yomismo@cristiantala.cl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ctala\\AWS\\": "src/"
+        }
+    }
+}
