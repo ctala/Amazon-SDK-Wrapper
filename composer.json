@@ -3,7 +3,7 @@
     "description": "Wrapper para el SDK de Amazon V3 para PHP Edit",
     "type": "library",
     "require": {
-        "vlucas/phpdotenv": "2.2",
+        "vlucas/phpdotenv": "^2.4",
         "aws/aws-sdk-php": "^3.24"
     },
     "license": "MIT",
