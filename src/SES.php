@@ -50,7 +50,14 @@ class SES extends Sdk {
             'key' => env('AMAZON_KEY_SES', $this->credentials["key"]),
             'secret' => env('AMAZON_SECRET_SES', $this->credentials["secret"]),
         );
-
+        $this->sharedConfig = [
+            'region' => $this->region,
+            'version' => $this->version,
+            'credentials' => $this->credentials
+        ];
+        // Creamos la clase SDK.
+        $this->sdk = new AWSSdk($this->sharedConfig);
+         
         $this->client = $this->sdk->createSes();
     }
 

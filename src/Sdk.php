@@ -63,7 +63,7 @@ class Sdk {
         
 
         // Creamos la clase SDK.
-        $this->sdk = new AWSSdk($this->sharedConfig);
+//        $this->sdk = new AWSSdk($this->sharedConfig);
     }
 
     function getClient() {

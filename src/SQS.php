@@ -45,6 +45,13 @@ class SQS extends Sdk {
             'secret' => env('AMAZON_SECRET_SQS', $this->credentials["secret"]),
         );
 
+        $this->sharedConfig = [
+            'region' => $this->region,
+            'version' => $this->version,
+            'credentials' => $this->credentials
+        ];
+        // Creamos la clase SDK.
+        $this->sdk = new AWSSdk($this->sharedConfig);
         $this->client = $this->sdk->createSqs();
     }
 
