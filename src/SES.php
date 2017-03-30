@@ -25,7 +25,7 @@
  */
 
 namespace ctala\AWS;
-
+use Aws\Sdk as AWSSdk;
 /**
  * Description of SES
  *
