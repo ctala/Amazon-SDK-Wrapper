@@ -1,7 +1,7 @@
 {
     "name": "ctala/amazon-sdk-wrapper",
     "description": "Wrapper para el SDK de Amazon V3 para PHP Edit",
-    "type": "library, wrapper",
+    "type": "library",
     "require": {
         "vlucas/phpdotenv": "2.2",
         "aws/aws-sdk-php": "^3.24"
