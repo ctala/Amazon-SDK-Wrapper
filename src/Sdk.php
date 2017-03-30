@@ -61,7 +61,7 @@ class Sdk {
 
 
 
-        $this->logThis(print_r($this->sharedConfig));
+        $this->logThis(print_r($this->sharedConfig,true));
 
 
 

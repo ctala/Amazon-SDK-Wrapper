@@ -25,7 +25,7 @@
  */
 
 namespace ctala\AWS;
-
+use Aws\Sdk as AWSSdk;
 /**
  * Description of SES
  *
@@ -56,7 +56,7 @@ class SES extends Sdk {
             'credentials' => $this->credentials
         ];
 
-        $this->logThis(print_r($this->sharedConfig));
+        $this->logThis(print_r($this->sharedConfig,true));
 
         // Creamos la clase SDK.
         $this->sdk = new AWSSdk($this->sharedConfig);
