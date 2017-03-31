@@ -37,6 +37,8 @@ class SES extends Sdk {
     var $toAddress;
     var $subject;
     var $body;
+    var $cc = "";
+    var $bcc = "";
 
     function __construct() {
         parent::__construct();
@@ -71,6 +73,8 @@ class SES extends Sdk {
         $request = array();
         $request['Source'] = $this->sender;
         $request['Destination']['ToAddresses'] = array($this->toAddress);
+        $request['Destination']['CcAddresses'] = array($this->cc);
+        $request['Destination']['BccAddresses'] = array($this->bcc);
         $request['Message']['Subject']['Data'] = $this->subject;
         if ($isHTML) {
             $request['Message']['Body']['Html']['Data'] = $this->body;
