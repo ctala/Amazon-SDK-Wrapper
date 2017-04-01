@@ -25,7 +25,7 @@
  */
 
 
-if (!function_exists('env')) {
+if (!function_exists('myenv')) {
 
     /**
      * Gets the value of an environment variable. Supports boolean, empty and null.
@@ -34,11 +34,11 @@ if (!function_exists('env')) {
      * @param  mixed   $default
      * @return mixed
      */
-    function env($key, $default = null) {
+    function myenv($key, $default = null) {
         $value = getenv($key);
 
         if ($value === false) {
-            return value($default);
+            return ($default);
         }
 
         switch (strtolower($value)) {

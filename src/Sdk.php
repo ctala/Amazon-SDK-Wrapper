@@ -52,13 +52,13 @@ class Sdk {
      */
     function __construct($credentials = null, $region = "us-west-2", $version = "latest", $debug = false) {
 
-        $this->region = env('AMAZON_REGION', $region);
-        $this->version = env('AMAZON_VERSION', $version);
+        $this->region = myenv('AMAZON_REGION', $region);
+        $this->version = myenv('AMAZON_VERSION', $version);
 
         if ($credentials == null) {
             $this->credentials = array(
-                'key' => env('AMAZON_KEY', ''),
-                'secret' => env('AMAZON_SECRET', ''),
+                'key' => myenv('AMAZON_KEY', ''),
+                'secret' => myenv('AMAZON_SECRET', ''),
             );
         } else {
             $this->credentials = $credentials;
@@ -71,7 +71,7 @@ class Sdk {
             'credentials' => $this->credentials
         ];
 
-        $this->debug = env('APP_DEBUG', $debug);
+        $this->debug = myenv('APP_DEBUG', $debug);
     }
 
     function getClient() {

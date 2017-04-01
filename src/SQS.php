@@ -50,8 +50,8 @@ class SQS extends Sdk {
 
         $this->queueName = "MyOwnQueue";
         $this->credentials = array(
-            'key' => env('AMAZON_KEY_SQS', $this->credentials["key"]),
-            'secret' => env('AMAZON_SECRET_SQS', $this->credentials["secret"]),
+            'key' => myenv('AMAZON_KEY_SQS', $this->credentials["key"]),
+            'secret' => myenv('AMAZON_SECRET_SQS', $this->credentials["secret"]),
         );
 
         $this->sharedConfig = [

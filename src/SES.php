@@ -60,8 +60,8 @@ class SES extends Sdk {
          * Si no existen particulares se usan las generales.
          */
         $this->credentials = array(
-            'key' => env('AMAZON_KEY_SES', $this->credentials["key"]),
-            'secret' => env('AMAZON_SECRET_SES', $this->credentials["secret"]),
+            'key' => myenv('AMAZON_KEY_SES', $this->credentials["key"]),
+            'secret' => myenv('AMAZON_SECRET_SES', $this->credentials["secret"]),
         );
         $this->sharedConfig = [
             'region' => $this->region,
