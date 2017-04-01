@@ -50,9 +50,9 @@ class SES extends Sdk {
      * @param type $debug
      */
     function __construct($credentials = null, $region = "us-west-2", $version = "latest", $debug = false) {
-        
+
         parent::__construct($credentials, $region, $version, $debug);
-        
+
         $this->sender = "Cristian Tala S. <yomismo@cristiantala.cl>";
         $this->subject = "Sin Título";
 
@@ -109,6 +109,30 @@ class SES extends Sdk {
             error_log("The email was not sent. Error message: ");
             error_log($e->getMessage() . "\n");
         }
+    }
+
+    /**
+     * https://tools.ietf.org/html/rfc2047#section-2
+     * base64_encode for sender
+     * @param type $email
+     * @param type $name
+     * @param type $encoding
+     */
+    function setSender($email, $name = "NO NAME", $encoding = "UTF-8") {
+
+        $sender = "=?$encoding?B?" . base64_encode($name) . "?= <$email>";
+        $this->sender = $sender;
+    }
+
+    /**
+     * https://tools.ietf.org/html/rfc2047#section-2
+     * base64_encode for subject
+     * @param type $subject
+     * @param type $encoding
+     */
+    function setSubject($subject, $encoding = "UTF-8") {
+        $encodedSubject = "=?$encoding?B?" . base64_encode($subject) . "?=";
+        $this->subject = $encodedSubject;
     }
 
 }
