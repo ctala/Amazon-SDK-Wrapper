@@ -25,7 +25,9 @@
  */
 
 namespace ctala\AWS;
+
 use Aws\Sdk as AWSSdk;
+
 /**
  * Description of SQS
  *
@@ -36,8 +38,15 @@ class SQS extends Sdk {
     var $queueName;
     var $queueUrl = null;
 
-    function __construct() {
-        parent::__construct();
+    /**
+     * 
+     * @param type $credentials
+     * @param type $region
+     * @param type $version
+     * @param type $debug
+     */
+    function __construct($credentials = null, $region = "us-west-2", $version = "latest", $debug = false) {
+        parent::__construct($credentials, $region, $version, $debug);
 
         $this->queueName = "MyOwnQueue";
         $this->credentials = array(
@@ -50,7 +59,7 @@ class SQS extends Sdk {
             'version' => $this->version,
             'credentials' => $this->credentials
         ];
-        $this->logThis(print_r($this->sharedConfig,true));
+        $this->logThis(print_r($this->sharedConfig, true));
         // Creamos la clase SDK.
         $this->sdk = new AWSSdk($this->sharedConfig);
         $this->client = $this->sdk->createSqs();

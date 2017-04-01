@@ -43,30 +43,35 @@ class Sdk {
     protected $client;
     var $debug = false;
 
-    function __construct() {
+    /**
+     * 
+     * @param type $credentials
+     * @param type $region
+     * @param type $version
+     * @param type $debug
+     */
+    function __construct($credentials = null, $region = "us-west-2", $version = "latest", $debug = false) {
 
-        $this->region = env('AMAZON_REGION', 'us-west-2');
-        $this->version = env('AMAZON_VERSION', 'latest');
-        $this->credentials = array(
-            'key' => env('AMAZON_KEY', ''),
-            'secret' => env('AMAZON_SECRET', ''),
-        );
+        $this->region = env('AMAZON_REGION', $region);
+        $this->version = env('AMAZON_VERSION', $version);
+
+        if ($credentials == null) {
+            $this->credentials = array(
+                'key' => env('AMAZON_KEY', ''),
+                'secret' => env('AMAZON_SECRET', ''),
+            );
+        } else {
+            $this->credentials = $credentials;
+        }
+
+
         $this->sharedConfig = [
             'region' => $this->region,
             'version' => $this->version,
             'credentials' => $this->credentials
         ];
 
-        $this->debug = env('APP_DEBUG', false);
-
-
-
-        $this->logThis(print_r($this->sharedConfig,true));
-
-
-
-        // Creamos la clase SDK.
-//        $this->sdk = new AWSSdk($this->sharedConfig);
+        $this->debug = env('APP_DEBUG', $debug);
     }
 
     function getClient() {
@@ -119,6 +124,15 @@ class Sdk {
 
     function setDebug($debug) {
         $this->debug = $debug;
+    }
+
+    function reCreateSDK() {
+        $this->sharedConfig = [
+            'region' => $this->region,
+            'version' => $this->version,
+            'credentials' => $this->credentials
+        ];
+        $this->sdk = new AWSSdk($this->sharedConfig);
     }
 
     function logThis($message) {

@@ -42,8 +42,17 @@ class SES extends Sdk {
     var $cc = null;
     var $bcc = null;
 
-    function __construct() {
-        parent::__construct();
+    /**
+     * 
+     * @param type $credentials
+     * @param type $region
+     * @param type $version
+     * @param type $debug
+     */
+    function __construct($credentials = null, $region = "us-west-2", $version = "latest", $debug = false) {
+        
+        parent::__construct($credentials, $region, $version, $debug);
+        
         $this->sender = "Cristian Tala S. <yomismo@cristiantala.cl>";
         $this->subject = "Sin Título";
 
