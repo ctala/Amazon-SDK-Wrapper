@@ -16,6 +16,7 @@
     "autoload": {
         "psr-4": {
             "ctala\\AWS\\": "src/"
-        }
+        },
+        "files": ["src/helpers.php"]
     }
 }
